@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from "../pages/Home"
 import Details from "../pages/Details"
 import Header from "../components/Header"
+import NewPost from "../pages/NewPost"
 
 const AppRouter = () => {
     return (
@@ -10,6 +11,7 @@ const AppRouter = () => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/details/:postId" element={<Details />} />
+                <Route path="/newpost" element={<NewPost />} />
             </Routes>
         </BrowserRouter>
     )
