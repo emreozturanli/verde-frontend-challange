@@ -8,13 +8,9 @@ const Home = () => {
   const { posts, loading } = useSelector(state => state.posts)
   const dispatch = useDispatch()
 
-  // useEffect(() => {
-  //   const id = 1
-  //   dispatch(getPosts({ id }))
-  // }, [])
   useEffect(() => {
     dispatch(getPosts())
-  }, [])
+  }, [dispatch])
 
   return (
     <>

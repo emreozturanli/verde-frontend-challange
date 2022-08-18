@@ -74,7 +74,6 @@ const initialState = {
   updatedPost: {},
   deleteText: '',
   loading: false,
-  error: false,
   isEdit: false,
   showUpdated:false,
   showAddedPost:false
@@ -99,7 +98,6 @@ export const postSlice = createSlice({
     },
     [getPosts.rejected]: (state) => {
       state.loading = false;
-      state.error = true
     },
     //POST
     [addNewPost.pending]: (state) => {
@@ -112,7 +110,6 @@ export const postSlice = createSlice({
     },
     [addNewPost.rejected]: (state) => {
       state.loading = false;
-      state.error = true
     },
     //UPDATE
     [updatePost.pending]: (state) => {
@@ -125,7 +122,6 @@ export const postSlice = createSlice({
     },
     [updatePost.rejected]: (state) => {
       state.loading = false;
-      state.error = true
     },
     //DELETE
     [deletePost.pending]: (state) => {
@@ -137,7 +133,6 @@ export const postSlice = createSlice({
     },
     [deletePost.rejected]: (state) => {
       state.loading = false;
-      state.error = true
     }
   },
 });
