@@ -77,6 +77,8 @@ const initialState = {
   loading: false,
   error: false,
   isEdit: false,
+  showUpdated:false,
+  showAddedPost:false
 };
 
 export const postSlice = createSlice({
@@ -106,7 +108,8 @@ export const postSlice = createSlice({
     },
     [addNewPost.fulfilled]: (state, action) => {
       state.loading = false;
-      state.addedPost = action.payload
+      state.addedPost = action.payload;
+      state.showAddedPost= true
     },
     [addNewPost.rejected]: (state) => {
       state.loading = false;
@@ -119,6 +122,7 @@ export const postSlice = createSlice({
     [updatePost.fulfilled]: (state, action) => {
       state.loading = false;
       state.updatedPost = action.payload
+      state.showUpdated = true
     },
     [updatePost.rejected]: (state) => {
       state.loading = false;

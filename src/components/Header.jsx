@@ -10,7 +10,12 @@ const Header = () => {
   const navigate = useNavigate()
   return (
     <header className='bg-white container shadow-md m-auto mt-8 p-5 flex justify-between items-center'>
-      <h1 className='text-3xl font-bold'>Arbit Blog</h1>
+      <h1 
+      className='text-3xl font-bold cursor-pointer' 
+      onClick={()=> navigate('/')}
+      >
+        Arbit Blog
+        </h1>
       <nav className='flex gap-4 items-center'>
         <h3 
         className='text-2xl font-semibold relative cursor-pointer'

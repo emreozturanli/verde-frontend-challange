@@ -8,7 +8,7 @@ const NewPost = () => {
         title: '',
         detail: ''
     })
-    const { loading, addedPost } = useSelector(state => state.posts)
+    const { loading, addedPost, showAddedPost} = useSelector(state => state.posts)
     const dispatch = useDispatch()
 
     const handleChange = (e) => {
@@ -52,7 +52,9 @@ const NewPost = () => {
                 </button>
 
             </form>
-            <div className='m-auto mt-3 md:w-1/2'>
+            {
+                showAddedPost &&
+                <div className='m-auto mt-3 md:w-1/2'>
                 {
                     loading
                         ?
@@ -68,6 +70,7 @@ const NewPost = () => {
 
                 }
             </div>
+            }
         </section>
     )
 }
