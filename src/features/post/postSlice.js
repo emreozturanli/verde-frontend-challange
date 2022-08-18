@@ -19,7 +19,6 @@ export const addNewPost = createAsyncThunk(
     const response = await fetch(url, {
       method: "POST",
       headers: {
-        Accept: 'application/json',
         "Content-type": "application/json"
       },
       body: JSON.stringify({
@@ -40,7 +39,6 @@ export const updatePost = createAsyncThunk(
     const response = await fetch(url, {
       method: "PUT",
       headers: {
-        Accept: 'application/json',
         "Content-type": "application/json"
       },
       body: JSON.stringify({
