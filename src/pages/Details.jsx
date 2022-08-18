@@ -7,14 +7,25 @@ import { RiCloseFill } from 'react-icons/ri';
 import { changeEdit, deletePost, removeDeleteText, updatePost } from '../features/post/postSlice';
 import spinner from "../assets/spinner.gif"
 import { useEffect, useState } from 'react';
+import Comments from '../components/Comments';
 
 const Details = () => {
-  const { posts, deleteText, loading, isEdit, updatedPost, showUpdated } = useSelector(state => state.posts)
   const { postId } = useParams()
+  const { posts, deleteText, loading, isEdit, updatedPost, showUpdated } = useSelector(state => state.posts)
+  const [comments,setComments] = useState([])
+  
+  const post = posts.find(item => item.id === +postId)
+  
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const post = posts.find(item => item.id === +postId)
+  const getComments = async () =>{
+      const url = `https://jsonplaceholder.typicode.com/posts/${post.id}/comments`
+      const response = await fetch(url);
+      const data = await response.json()
+      setComments(data)
+  }
+
 
   const [updateText, setUpdateText] = useState({
     title: post?.title,
@@ -38,6 +49,9 @@ const Details = () => {
     if (!post) {
       navigate('/')
     }
+    else{
+      getComments()
+    }
   }, [])
 
   const handleChange = (e) => {
@@ -48,6 +62,7 @@ const Details = () => {
   }
 
   return (
+    <>
     <section className='container bg-white mt-4 mx-auto p-5 shadow-md flex gap-6'>
       <aside>
         <button
@@ -158,6 +173,13 @@ const Details = () => {
         }
       </article>
     </section>
+    <section className='container bg-white mx-auto p-5 shadow-md'>
+      <h2 className='md:w-9/12 xl:w-1/2  mt-3 ml-16 font-bold'>Comments</h2>
+        {
+          comments?.map((comment,index)=><Comments key={index} {...comment}/>)
+        }
+    </section>
+    </>
   )
 }
 

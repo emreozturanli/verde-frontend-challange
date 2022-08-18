@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const {posts} = useSelector(state => state.posts)
+  const myPosts = posts.filter((post)=> post.userId === 1).length
   const navigate = useNavigate()
   return (
     <header className='bg-white container shadow-md m-auto mt-8 p-5 flex justify-between items-center'>
@@ -22,7 +23,7 @@ const Header = () => {
         onClick={()=> navigate('/')}
         >
           Posts
-          <span className='absolute rounded-full bg-teal-200 text-base left-11 bottom-6 w-5 h-5 flex justify-center items-center'>{posts.length}</span>
+          <span className='absolute rounded-full bg-teal-200 text-base left-11 bottom-6 w-5 h-5 flex justify-center items-center'>{myPosts}</span>
           </h3>
         <IoMdNotifications size={25} className='cursor-pointer'/>
         <AiTwotoneAppstore size={25} className='cursor-pointer'/>

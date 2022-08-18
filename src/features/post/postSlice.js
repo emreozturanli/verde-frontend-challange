@@ -3,10 +3,11 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 // GET
 export const getPosts = createAsyncThunk(
   'posts/getPosts',
-  async ({ id = 1 }) => {
-    const url = `https://jsonplaceholder.typicode.com/posts/${id}`
+  async () => {
+    const url = `https://jsonplaceholder.typicode.com/posts`
     const response = await fetch(url);
     const data = await response.json()
+    console.log(data)
     return data;
   }
 );
@@ -94,7 +95,7 @@ export const postSlice = createSlice({
     },
     [getPosts.fulfilled]: (state, action) => {
       state.loading = false;
-      state.posts = [action.payload]
+      state.posts = action.payload
     },
     [getPosts.rejected]: (state) => {
       state.loading = false;

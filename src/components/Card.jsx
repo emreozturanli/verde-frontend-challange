@@ -9,7 +9,7 @@ const Card = ({id,title,body,userId}) => {
     onClick={()=>navigate(`/details/${id}`)}
     >
       <h3 className='font-bold pb-4'>{title}</h3>
-      <p>{body.slice(0,100)}...</p>
+      <p>{body?.slice(0,100)}...</p>
     </div>
   )
 }
